@@ -10,10 +10,10 @@ def get_mysqlconnection():
     #connection credentials should be derived from the secret manager.
     #For demo purpose, I am giving hardcoded values.
     db = mysql.connector.connect(
-        host="localhost",
-        user="dev",
-        password="Pass@123",
-        database="paymentanalytics"
+        host="<servername>",
+        user="<Username>",
+        password="<Password>",
+        database="<databasename>"
         , use_pure=True)
     return db
 # This function connects to braintree API and fetches the trancation details
@@ -29,9 +29,9 @@ def getBrainTreePaymentStatus(start_date, end_date):
         gateway = braintree.BraintreeGateway(
             braintree.Configuration(
                 environment=braintree.Environment.Sandbox,  # Replace with your environment (sandbox or production)
-                merchant_id='yqqkw2hv42synyms',
-                public_key='q8xgq6wcbtfs6mh5',
-                private_key='4d9dcb89417e7901739bd40fde51ea42'
+                merchant_id='<merchantid>',
+                public_key='<publickey>',
+                private_key='<privatekey>'
             )
         )
         print("creating mysql db connection:")
@@ -71,7 +71,7 @@ def getStripePaymentStatus(start_date, end_date):
     try:
         print("Get the sample result from the stripe PG:")
         import stripe
-        stripe.api_key = "sk_test_51MRCC0SFpfV65WaF8I5HXQgix1M1pEJ5InWjIVUfY2bkN8b7QiMKljEsMkNgcl4Ug3ctCukKGshjl06VQEIOTxOo0"
+        stripe.api_key = "<API KEY>"
 
         created = {'gte': '2023-12-26T00:00:00Z', 'lte': '2023-12-28T00:00:00'}
 
